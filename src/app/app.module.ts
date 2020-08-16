@@ -10,14 +10,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FirstComponent } from './first/first.component';
+import { SecondComponent } from './second/second.component';
+import { ThirdComponent } from './third/third.component';
+
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    FirstComponent
+    FirstComponent,
+    SecondComponent,
+    ThirdComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     MatSidenavModule,
     NoopAnimationsModule,
