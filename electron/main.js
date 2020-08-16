@@ -13,7 +13,6 @@ function createMainWindow() {
     })
 
     mainWindow.webContents.openDevTools()
-        // and load the index.html of the app.
     mainWindow.menuBarVisible = false
     mainWindow.loadURL('http://localhost:4200')
 }
