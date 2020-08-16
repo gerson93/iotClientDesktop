@@ -14,6 +14,7 @@ import { SecondComponent } from './second/second.component';
 import { ThirdComponent } from './third/third.component';
 
 import { AppRoutingModule } from "./app-routing.module";
+import { LoginComponent } from './dialog/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from "./app-routing.module";
     SidebarComponent,
     FirstComponent,
     SecondComponent,
-    ThirdComponent
+    ThirdComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
