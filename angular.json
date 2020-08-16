@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "iotClientDesktop"
+    }
+  },
+  "defaultProject": "iotClientDesktop",
+  "cli": {
+    "analytics": false
+  }
 }
