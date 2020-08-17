@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SocketIOService } from "../services/socket-io.service";
+import { DialogService } from "../services/dialog.service";
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private socket: SocketIOService, private dialog: DialogService) { }
 
   ngOnInit(): void {
+    this.socket.connect()
+  }
+
+  openLoginDialog(){
+    this.dialog.openLoginDialog()
   }
 
 }

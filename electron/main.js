@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 
 const path = require('path');
-const url = require('url');
 
 let mainWindow;
 
@@ -11,14 +10,15 @@ function createMainWindow() {
         height: 600,
         title: 'client',
         webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
         }
     })
 
     mainWindow.webContents.openDevTools()
     mainWindow.menuBarVisible = false
-        /* mainWindow.loadURL('http://localhost:4200') */
-    mainWindow.loadURL(`file://${__dirname}/../angulardist/iotClientDesktop/index.html`)
+    mainWindow.loadURL('http://localhost:4200')
+        /* mainWindow.loadURL(`file://${__dirname}/../angulardist/iotClientDesktop/index.html`) */
 }
 
 app.whenReady().then(() => {

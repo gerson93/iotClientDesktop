@@ -6,6 +6,7 @@
 /out-tsc
 /angulardist
 /release
+/server
 # Only exists if Bazel was run
 /bazel-out
 
