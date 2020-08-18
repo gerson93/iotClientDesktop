@@ -1,5 +1,30 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
+<h1 mat-dialog-tile>Login</h1>
+
+<div mat-dialog-content class="loginForm">
+    <form novalidate [formGroup]=loginForm>
+        <div fxLayout="column" fxLayoutAlign="space-around start">
+            <mat-form-field>
+                <mat-label>Usuario: </mat-label>
+                <input matInput [(ngModel)]="data.user" type="text" formControlName="user">
+                <mat-error *ngIf="loginForm.controls.user.hasError('required')">Debes ingresar un usario</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contraseña: </mat-label>
+                <input matInput [(ngModel)]="data.password" type="password" formControlName="password">
+                <mat-error *ngIf="loginForm.controls.password.hasError('required')">Debes ingresar una contraseña</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Dirección: </mat-label>
+                <input matInput [(ngModel)]="data.url" type="text" formControlName="url">
+                <mat-error *ngIf="loginForm.controls.url.hasError('required')">Debes ingresar una dirección</mat-error>
+            </mat-form-field>
+
+            <mat-checkbox [(ngModel)]="data.save" formControlName="save">Guardar</mat-checkbox>
+
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="action-dialog">
+    <button mat-button [mat-dialog-close]="data" [disabled]="!loginForm.valid">Entrar</button>
+    <button mat-button [mat-dialog-close]>Cancelar</button>
 </div>

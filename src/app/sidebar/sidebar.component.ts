@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SocketIOService } from "../services/socket-io.service";
-import { DialogService } from "../services/dialog.service";
+import { LoginService } from "../services/login.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -10,14 +10,15 @@ import { DialogService } from "../services/dialog.service";
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private socket: SocketIOService, private dialog: DialogService) { }
+  constructor(private socket: SocketIOService, private login: LoginService) { }
 
   ngOnInit(): void {
-    this.socket.connect()
+    /* this.socket.connect() */
+    this.login.authenticateWithSavedCredentials()
   }
 
   openLoginDialog(){
-    this.dialog.openLoginDialog()
+    this.login.loginWindow()
   }
 
 }
