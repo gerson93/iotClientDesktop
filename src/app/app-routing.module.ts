@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from "@angular/router";
 
-import { FirstComponent } from "./first/first.component";
-import { SecondComponent } from "./second/second.component";
-import { ThirdComponent } from "./third/third.component";
+import { DeviceComponent } from "./device/device.component";
+import { AlarmComponent } from "./alarm/alarm.component";
+import { HistoryComponent } from "./history/history.component";
 
 const routes: Routes = [
-  { path: '', component: FirstComponent },
-  { path: 'first', component: FirstComponent },
-  { path: 'second', component: SecondComponent },
-  { path: 'third', component: ThirdComponent }
+  { path: '', component: DeviceComponent },
+  { path: 'devices', component: DeviceComponent },
+  { path: 'alarms', component: AlarmComponent },
+  { path: 'history', component: HistoryComponent }
 ]
 
 @NgModule({

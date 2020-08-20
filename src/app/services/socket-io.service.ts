@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from "ngx-socket-io";
 import { login } from '../interfaces/login.interface';
+import { device } from "../interfaces/device.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,23 @@ import { login } from '../interfaces/login.interface';
 export class SocketIOService {
 
   constructor(private socket: Socket) { }
+  /* Device functions */
+  getDevicesList(){
+    return new Promise ((resolve) => {
+      this.socket.emit('getdeviceslist', (devices) =>{
+        resolve(devices)
+      })
+    })
+  }
+
+  /* Listenner functions */
+  newDevice(){
+    this.socket.on('newdevice', (newDevice: device)=>{
+
+    })
+  }
+
+  /* Connections functions */
 
   connect(url: string, token?: string) {
     return new Promise((resolve, rejected) => {

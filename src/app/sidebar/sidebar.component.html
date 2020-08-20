@@ -5,3 +5,14 @@
         <mat-icon>account_box</mat-icon>
     </button>
 </div>
+
+<mat-selection-list [multiple]=false>
+    <div *ngFor="let option of options">
+        <mat-list-option [routerLink]="['/', option.routerName]">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="50px">
+                <mat-icon>{{option.icon}}</mat-icon>
+                {{option.name}}
+            </div>
+        </mat-list-option>
+    </div>
+</mat-selection-list>
