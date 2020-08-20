@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { device } from "../interfaces/device.interface";
 import { SocketIOService } from "../services/socket-io.service";
 
+import { DEVICES } from "../shared/device";
+import { SnackbarService } from './snackbar.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DevicesService {
 
-  constructor(private socket: SocketIOService) { }
+  constructor(private socket: SocketIOService, private snackBar: SnackbarService) { }
 
   getDevicesList() {
     /* pedir listado de dispositivos ingresados en el servidor */
@@ -21,8 +24,17 @@ export class DevicesService {
     /* función para generar un control para la comunicación con el dispositivo*/
   }
 
-  newDevice(device: device) {
+  newDevice(device?: device) {
     /* Función para ingresar nuevos dispositivos a la lista, sin tener que pedir la lista completa */
+    return new Promise ((resolved, rejected) => {
+      this.snackBar.openSnackBar('new device', 'add', () => {
+        DEVICES.push({id: 1, name: 'new device'})
+        resolved()
+      })
+      setTimeout(() => {
+        rejected()
+      }, 2000)
+    })
   }
 
   dropDevice(device: device) {

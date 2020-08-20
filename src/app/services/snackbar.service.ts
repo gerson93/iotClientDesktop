@@ -8,10 +8,18 @@ export class SnackbarService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  openSnackBar(message: string, action?: string) {
+  openSnackBar(message: string, action?: string, callbackAction?: any) {
     if (!action) { action = 'Aceptar' }
-    this.snackBar.open(message, action, {
+    const snackBar = this.snackBar.open(message, action, {
       duration: 2000,
     })
+
+    if (callbackAction) {
+      snackBar.onAction().subscribe(
+        callbackAction
+      )
+    }
   }
+
+
 }

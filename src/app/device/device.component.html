@@ -3,6 +3,7 @@
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="voltage sensor" #input>
     </mat-form-field>
+    <button (click)="addNewDeviceAuthomatic()">New</button>
 
     <table mat-table [dataSource]='dataSource' class="mat-elevation-z8" [multiTemplateDataRows]="true" matSort>
         <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">

@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table'; 
+import { MatTableDataSource } from '@angular/material/table';
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
+
+import { DevicesService } from "../services/devices.service";
 
 import { device } from "../interfaces/device.interface";
 import { DEVICES } from "../shared/device";
@@ -30,10 +32,11 @@ export class DeviceComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name']
   expandedDevice: device | null
 
-  constructor() { 
+  constructor(private devices: DevicesService) {
     this.dataSource = new MatTableDataSource(DEVICES)
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
+    this.dataSource._updateChangeSubscription()
   }
 
   ngOnInit(): void {
@@ -46,5 +49,13 @@ export class DeviceComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  /* Test functions */
+  addNewDeviceAuthomatic() {
+    /* work! */
+    this.devices.newDevice()
+      .then(() => this.dataSource.data = this.dataSource.data)
+      .catch(() => console.log('ignored'))
   }
 }
